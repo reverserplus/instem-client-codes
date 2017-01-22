@@ -22,8 +22,8 @@ app.use(bodyParser.json({type: 'application/json'}));
 
 const CONFIRM_TYPE_CONTEXT = 'confirm_type';
 const CLIENT_CODE_ACTION = 'get_client_code';
-const EXPENSES_TYPE_ACTION = 'ask_expenses_or_services';
-const EXPENSES_TYPE_ARGUMENT = 'codetype';
+const CODE_TYPE_ACTION = 'ask_expenses_or_services';
+const CODE_TYPE_ARGUMENT = 'codetype';
 const CLIENT_NAME_ARGUMENT = 'clientname';
 
 var data = {
@@ -46,11 +46,16 @@ app.post('/', function (req, res) {
   }
 
   function getClientCode (assistant) {
-	  let type = assistant.getArgument(EXPENSES_TYPE_ARGUMENT);
+	  let type = assistant.getArgument(CODE_TYPE_ARGUMENT);
     let name = assistant.data.clientName;
     var key = name;
     var clientNameKeyIndex = data[key];
-    let code = clientNameKeyIndex.ExpenseCode;
+    if (type === 'Expenses'){
+        let code = clientNameKeyIndex.ExpenseCode;
+    } 
+    else if (type === 'Services'){
+        let code = clientNameKeyIndex.ServiceCode;
+    }
     assistant.tell('The ' + type + ' code for ' + name + ' is ' + code + '.');
     //assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
 	  /*if (name === 'CRS'){
@@ -62,7 +67,7 @@ app.post('/', function (req, res) {
 
   let actionMap = new Map();
   actionMap.set(CLIENT_CODE_ACTION, getClientCode);
-  actionMap.set(EXPENSES_TYPE_ACTION, askExpensesOrServices);
+  actionMap.set(CODE_TYPE_ACTION, askExpensesOrServices);
   assistant.handleRequest(actionMap);
 });
 
