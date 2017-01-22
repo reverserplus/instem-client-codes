@@ -56,7 +56,7 @@ app.post('/', function (req, res) {
     else if (type === 'Services'){
         let code = clientNameKeyIndex.ServiceCode;
     }
-    assistant.tell('The ' + type + ' code for ' + name + ' is ' + code + '.');
+    assistant.tell('The ' + type + ' code for ' + name + ' is ' + code);
     //assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
 	  /*if (name === 'CRS'){
 		  assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
