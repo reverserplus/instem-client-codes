@@ -20,7 +20,10 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
+const CONFIRM_TYPE_CONTEXT = 'confirm_type'
 const CLIENT_CODE_ACTION = 'get_client_code';
+const EXPENSES_TYPE_ACTION = 'ask_expenses_or_services'
+const EXPENSES_TYPE_ARGUMENT = 'codetype'
 const CLIENT_NAME_ARGUMENT = 'clientname';
 
 app.post('/', function (req, res) {
@@ -28,18 +31,26 @@ app.post('/', function (req, res) {
   console.log('Request headers: ' + JSON.stringify(req.headers));
   console.log('Request body: ' + JSON.stringify(req.body));
 
-  function getClientCode (assistant) {
-	let name = assistant.getArgument(CLIENT_NAME_ARGUMENT);
-	if (name === 'CRS'){
-		assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
-	}
-	else{
-	assistant.ask ('Sorry, I dont know any ' + name + ' client codes.  Try again.');
-	}
+  function askExpensesOrServices(assistant){
+    let name = assistant.getArgument(CLIENT_NAME_ARGUMENT);
+    assistant.setContext(CONFIRM_TYPE_CONTEXT);
+    assistant.data.clientName = name;
+    assistant.ask('You asked about ' + name + '.  Do you need an expenses or services code?');
   }
-  
+
+  function getClientCode (assistant) {
+	  let type = assistant.getArgument(EXPENSES_TYPE_ARGUMENT);
+    assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.' )
+	  /*if (name === 'CRS'){
+		  assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
+	  }
+	  else{
+	    assistant.ask ('Sorry, I dont know any ' + name + ' client codes.  Try again.');*/
+	  }
+  
   let actionMap = new Map();
   actionMap.set(CLIENT_CODE_ACTION, getClientCode);
+  actionMap.set(EXPENSES_TYPE_ACTION, askExpensesOrServices);
   assistant.handleRequest(actionMap);
 });
 
