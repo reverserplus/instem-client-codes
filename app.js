@@ -35,7 +35,7 @@ var data = {
     "ServiceCode": "1 2 5 0 0 0 2 5",
     "ExpenseCode": "1 2 5 0 0 0 2 6"
   },
-  "Biotesys" : {
+  "BioTeSys" : {
     "ServiceCode": "1 2 5 0 0 0 1 4",
     "ExpenseCode": "1 2 5 0 0 0 1 5"
   },
