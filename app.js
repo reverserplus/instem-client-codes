@@ -27,18 +27,37 @@ const CODE_TYPE_ARGUMENT = 'codetype';
 const CLIENT_NAME_ARGUMENT = 'clientname';
 
 var data = {
-  "BioTeSys" : {
-    "ExpenseCode": "1 1",
-    "ServiceCode": "2 2"
+  "Actavis" : {
+    "ServiceCode": "1 3 5 0 0 0 1 4",
+    "ExpenseCode": "1 3 5 0 0 0 1 5"
+  },
+  "BioKinetic" : {
+    "ServiceCode": "1 2 5 0 0 0 2 5",
+    "ExpenseCode": "1 2 5 0 0 0 2 6"
+  },
+  "Biotesys" : {
+    "ServiceCode": "1 2 5 0 0 0 1 4",
+    "ExpenseCode": "1 2 5 0 0 0 1 5"
   },
   "CRS" : {
-    "ExpenseCode": "3 3",
-    "ServiceCode": "4 4"
+    "ServiceCode": "1 2 5 0 0 0 2 3",
+    "ExpenseCode": "1 2 5 0 0 0 2 4"
   },
-  "SNBL" : {
-    "ExpenseCode": "5 5",
-    "ServiceCode": "6 6"
-  }
+  "Davita" : {
+    "ServiceCode": "1 3 5 0 0 0 2 3",
+    "ExpenseCode": "1 3 5 0 0 0 2 4"
+  },
+  "Eli Lilly" : {
+    "ServiceCode": "1 3 5 0 0 0 1 6",
+    "ExpenseCode": "1 3 5 0 0 0 1 7"
+  },
+  "Inflamax" : {
+    "ServiceCode": "1 3 5 0 0 0 0 6",
+    "ExpenseCode": "1 3 5 0 0 0 0 7"
+  },
+  "Instem Clinical" : {
+    "ServiceCode": "1 2 5 0 0 0 1 7",
+    "ExpenseCode": "1 3 5 0 0 0 0 7"
 };
 
 app.post('/', function (req, res) {
