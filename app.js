@@ -30,6 +30,14 @@ var data = {
   "BioTeSys" : {
     "ExpenseCode": "1 1",
     "ServiceCode": "2 2"
+  },
+  "CRS" : {
+    "ExpenseCode": "3 3",
+    "ServiceCode": "4 4"
+  },
+  "SNBL" : {
+    "ExpenseCode": "5 5",
+    "ServiceCode": "6 6"
   }
 };
 
