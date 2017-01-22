@@ -34,7 +34,7 @@ app.post('/', function (req, res) {
 		assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
 	}
 	else{
-	assistant.tell ('Sorry, I dont know any ' + name + ' client codes');
+	assistant.ask ('Sorry, I dont know any ' + name + ' client codes.  Try again.');
 	}
   }
   
