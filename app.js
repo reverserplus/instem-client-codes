@@ -70,7 +70,7 @@ app.post('/', function (req, res) {
     let name = assistant.getArgument(CLIENT_NAME_ARGUMENT);
     assistant.setContext(CONFIRM_TYPE_CONTEXT);
     assistant.data.clientName = name;
-    assistant.ask('You asked about ' + name + '.  Do you need an expenses or services code?');
+    assistant.ask(name + ', got it. Do you need an expenses code or a services code?');
   }
 
   function getClientCode (assistant) {
@@ -80,12 +80,14 @@ app.post('/', function (req, res) {
     var clientNameKeyIndex = data[key];
     if (type === 'Expenses'){
         let code = clientNameKeyIndex.ExpenseCode;
-        assistant.tell('The ' + name + ' expense code is ' + code + '.')
+        assistant.tell('The ' + name + ' expense code is ' + code + '.');
     } 
     else if (type === 'Services'){
         let code = clientNameKeyIndex.ServiceCode;
-        assistant.tell('The ' + name + ' services code is ' + code + '.')
+        assistant.tell('The ' + name + ' services code is ' + code + '.');
     }
+    else
+        assistant.ask('Sorry, I didn\'t get that.  Do you need an expenses code or a services code?');
     //assistant.tell('The ' + type + ' code for ' + name + ' is ' + code);
     //assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
 	  /*if (name === 'CRS'){
