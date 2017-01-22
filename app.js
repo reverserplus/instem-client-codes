@@ -41,7 +41,7 @@ app.post('/', function (req, res) {
   function getClientCode (assistant) {
 	  let type = assistant.getArgument(EXPENSES_TYPE_ARGUMENT);
     let name = assistant.data.clientName;
-    assistant.tell(type + ' was the type and the client was ' + name + '.');
+    assistant.tell('The ' + type + 'code for ' + name + ' is NNN.');
     //assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
 	  /*if (name === 'CRS'){
 		  assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
