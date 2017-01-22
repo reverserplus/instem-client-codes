@@ -40,14 +40,15 @@ app.post('/', function (req, res) {
 
   function getClientCode (assistant) {
 	  let type = assistant.getArgument(EXPENSES_TYPE_ARGUMENT);
-    assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
+    assistant.tell('This works.');
+    //assistant.tell('I\'ll try to get the ' + assitant.data.clientName + ' ' + type + ' code.');
 	  /*if (name === 'CRS'){
 		  assistant.tell('The CRS services code is 1 2 5 0 0 0 2 3');
 	  }
 	  else{
 	    assistant.ask ('Sorry, I dont know any ' + name + ' client codes.  Try again.');*/
 	  }
-    
+
   let actionMap = new Map();
   actionMap.set(CLIENT_CODE_ACTION, getClientCode);
   actionMap.set(EXPENSES_TYPE_ACTION, askExpensesOrServices);
