@@ -70,7 +70,7 @@ app.post('/', function (req, res) {
     let name = assistant.getArgument(CLIENT_NAME_ARGUMENT);
     assistant.setContext(CONFIRM_TYPE_CONTEXT);
     assistant.data.clientName = name;
-    assistant.ask(name + ', got it. Do you need an expenses code or a services code?');
+    assistant.ask('OK, ' + name + ', got it. Do you need an expenses code or a services code?');
   }
 
   function getClientCode (assistant) {
